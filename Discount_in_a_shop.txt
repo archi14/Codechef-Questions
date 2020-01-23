@@ -1,0 +1,42 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	long int t;
+	cin>>t;
+	for(long int i=0;i<t;i++)
+	{
+	   // taking the input as string, so that the traversal is easier.
+	    string s;
+	    cin>>s;
+	    // flag to check whether any element has a smaller digit next to it or not
+	    int flag=1;
+	    for(int j=0;j<s.length()-1;j++)
+	    {
+		// traversing the number from the right side, if any smaller digit to the left of a digit is obtained
+		 then we stop there and remove that 
+	        if(s[j+1]<s[j])
+	        {
+	            for(int k=j;k<s.length()-1;k++)
+	            {
+	                s[k]=s[k+1];
+	            }
+		// decreasing the length of the array.
+	            s[s.length()-1]='\0';
+	            flag=0;
+	            break;
+	        }
+	        
+	    }
+		// if all the digits are in increasing order , then we simply remove the last digit.
+	    if(flag)
+	    {
+	        s[s.length()-1]='\0';
+	    }
+		// converting the string to integer to tackle cases where output could be 0003 or 00000 and so on.
+	    int ans = stoi(s);
+	    cout<<ans<<endl;
+	}
+	
+}
