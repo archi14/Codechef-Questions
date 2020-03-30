@@ -1,0 +1,36 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	
+	int t;
+	cin>>t;
+	for(int q=0;q<t;q++)
+	{
+	    int first,second;
+	    cin>>first>>second;
+		//Retrieving the digits of the numbers 
+	    int fo=first%10;
+	    int ft= first/10;
+	    int so=second%10;
+	    int st = second/10;
+	    int ans;
+	    if(ft==0 && st==0)
+	    {
+	        ans=first+second; // if both are single digit, then simply add them.
+	    }else if(ft==0)
+	    {
+	        ans = max(fo+so+st*10,so+st+fo*10); // first is single digit, then try exchanging the ones of first with tens of second.
+	    }else if(st==0)
+	    {
+	        ans = max(so+fo+ft*10,fo+ft+so*10); // same as above.
+	    }else{
+	        // there will be no benefit in exchanges the tens and ones digits, either ten of first with one of second or vice versa.
+		// checking which would give us the maximum sum.
+	        ans = max(first+second,max(so*10+fo+st*10+ft,fo*10+so+ft*10+st));
+	    }
+	    cout<<ans<<endl;
+	    
+	}
+}
