@@ -1,0 +1,49 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+// We have to ultimately check for the condition where the goal scored by one team is greater than the goal scored by other team plus their remaining matches.
+int main() {
+	int t;
+	cin>>t;
+	for(int q=0;q<t;q++)
+	{
+	    int n;
+	    cin>>n;
+	    string a;
+	    cin>>a;
+	    int ans;
+	    int n1=n;	// remaining goals for A
+	    int n2=n;	// remaining goals for B
+	    int f=0;
+	    int aw=0,bw=0;
+	    for(int i=0;i<a.size();i++)
+	    {
+	        if(i%2==0)
+	        {
+	            
+	            if(a[i]=='1')
+	                 aw++;
+	                 n1--;
+	        }else
+	        {
+	            if(a[i]=='1')
+	                bw++;
+	                n2--;
+	        }
+	        if(aw>n2+bw || n1+aw<bw) // Checking the above mentioned condition.
+	        {
+	            f=1;
+	            ans=i+1;
+	            break;
+	        }
+	    }
+	    if(f)
+	    {
+	        cout<<ans<<endl;
+	    }else
+	    {
+	        cout<<2*n<<endl;
+	    }
+	}
+}
