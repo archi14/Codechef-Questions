@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+//simply check if the difference in indexes of two 1 is greater than 6 or not.
+int main(void) {
+	int t;
+	scanf("%d",&t);
+	int q;
+	for(q=0;q<t;q++)
+	{
+	    int n;
+	    scanf("%d",&n);
+	    int a[n],i;
+	    for(i=0;i<n;i++)
+	    {
+	        scanf("%d",&a[i]);
+	    }
+	    int index=-1;
+	    int f=1;
+	    for(i=0;i<n;i++)
+	    {
+	        if(a[i]==1)
+	        {
+	            if(index==-1)
+	            {
+	                index=i;
+	            }else
+	            {
+	                int s= i-index;
+	                if(s<6)
+	                {
+	                    f=0;
+	                    break;
+	                }else
+	                {
+	                    index=i;
+	                }
+	            }
+	        }
+	    }
+	    if(f)
+	    {
+	        printf("YES\n");
+	       
+	    }else
+	    {
+	        printf("NO\n");
+	    }
+	}
+}
+
