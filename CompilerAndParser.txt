@@ -1,0 +1,44 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+// The important thing to remember in this is that this is not a bracket matching question, you have to length of prefix that satisifies the valid condition
+// I am using opened variable to store the count of open brackets encountered till now, reducing the value when closing brackets are encountered.
+// for the value to be a valid prefix, opened brackets should be 0 at a point, after that if opening bracket are encountered then continue the same way, else break.
+int main() {
+	int t;
+	cin>>t;
+	for(int q=0;q<t;q++)
+	{
+	    string a;
+	    cin>>a;
+	    int opened=0;
+	    int count=0;
+	    int ans=0;
+	    for(int i=0;i<a.size();i++)
+	    {
+	        if(a[i]=='<')
+	        {
+	            opened++;
+	            count++;
+	        }else
+	        {
+	            if(opened!=0)
+	            {
+	                opened--;
+	            }else
+	            {
+	                break;
+	            }
+	            if(opened==0)
+	            {
+	                //cout<<count<<" c";
+	                ans+=2*count;
+	                count=0;
+	            }
+	        }
+	    }
+	    cout<<ans<<endl;
+	}
+	
+	
+}
