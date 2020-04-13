@@ -1,0 +1,35 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+// Number Theory question. Two important prerequisites, Calculating prime factors of a number and
+// for any number E(i=1>k)pi^ai= Number where p are prime number and ai is the power of pi and total divisors of a number are E(i=1->k) (ai+1)
+int main() {
+	int t;
+	cin>>t;
+	for(int q=0;q<t;q++)
+	{
+	    int x,k;
+	    cin>>x>>k;
+	    int factor=0;
+	    for(int i=2;i<=sqrt(x);i++)
+	     {   while(x%i==0)
+	        {
+	            x=x/i;
+	            factor++;
+	        }
+	       
+	    }
+	    if(x>1)
+	    {
+	        factor++;
+	    }
+	    if(factor>=k)
+	    {
+	        cout<<1<<endl;
+	    }else
+	    {
+	        cout<<0<<endl;
+	    }
+	}
+}
