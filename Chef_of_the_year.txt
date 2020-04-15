@@ -1,0 +1,54 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n,m;
+	cin>>n>>m;
+	unordered_map<string,string> country;
+	for(int i=0;i<n;i++)
+	{
+	    string name,c;
+	    cin>>name>>c;
+	    country[name]=c;
+	}
+	unordered_map<string,int> chefVotes;
+	unordered_map<string,int> countryVotes;
+	int tempChef=0;
+	int tempCountry=0;
+	string maxCountry="";
+	string maxChef="";
+	for(int i=0;i<m;i++)
+	{
+	    string name;
+	    cin>>name;
+	    chefVotes[name]++;
+	    countryVotes[country[name]]++;
+	    if(chefVotes[name]>tempChef)
+	    {
+	        tempChef = chefVotes[name];
+	        maxChef = name;
+	    }else if(chefVotes[name]==tempChef)
+	    {
+	        if(name<maxChef)
+	        {
+	            maxChef = name;
+	        }
+	    }
+	    
+	    if(countryVotes[country[name]]>tempCountry)
+	    {
+	        tempCountry = countryVotes[country[name]];
+	        maxCountry = country[name];
+	    }else if(countryVotes[country[name]]==tempCountry)
+	    {
+	        if(maxCountry>country[name])
+	        {
+	            maxCountry = country[name];
+	        }
+	    }
+	}
+	cout<<maxCountry<<endl;
+	cout<<maxChef<<endl;
+	
+}
