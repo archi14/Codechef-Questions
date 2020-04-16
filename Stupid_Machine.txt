@@ -1,0 +1,64 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<long long ,long long> pi;
+typedef long long ll;
+int main() {
+	ll t;
+	cin>>t;
+	for(ll q=0;q<t;q++)
+	{
+	    ll n;
+	    cin>>n;
+	    priority_queue<pi, vector<pi>,greater<pi> > pq;
+	    for(ll i=0;i<n;i++)
+	    {
+	        ll temp;
+	        cin>>temp;
+	        if(pq.empty())
+	        {
+	            pq.push(make_pair(temp,i));    
+	        }else if(temp<(pq.top()).first)
+	        {
+	            pq.push(make_pair(temp,i));
+	        }
+	        
+	    }
+	    ll sum=0;
+	    ll last = n-1;
+	    int f=1;
+	    ll sub=0;
+	    while(!pq.empty())
+	    {
+	        pi temp = pq.top();
+	        ll element = temp.first;
+	        ll index = temp.second;
+	        pq.pop();
+	        if(index>last)
+	        {
+	            continue;
+	        }
+	        if(f==1)
+	        {
+	            sum+=n*element;
+	            sub+=element;
+	            f=0;
+	        }else
+	        {
+	            element-=sub;
+	            if(element>0)
+	            {
+	                sum+=(last+1)*element;
+	                sub+=element;
+	            }else
+	            {
+	                break;
+	            }
+	            
+	        }
+	        last = index-1;
+	    }
+	    cout<<sum<<endl;
+	}
+	return 0;
+}
