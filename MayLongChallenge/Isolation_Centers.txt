@@ -1,0 +1,39 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+Simple store the occurence of each character in a array.
+Then check whether the count of each character is smaller and equal to Isolation Centers or not.
+If less and equal then simply proceed to next character else put the extra count in pending count.
+int main() {
+	
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,q;
+	    cin>>n>>q;
+	    string people;
+	    cin>>people;
+	    int mapping[26]={0};
+	    for(int i=0;i<people.size();i++)
+	    {
+	        mapping[people[i]-'a']++;
+	    }
+	    for(int i=0;i<q;i++)
+	    {
+	            int c;
+	            cin>>c;
+	            int count=0;
+	            for(int j=0;j<26;j++)
+	            {
+	                if(mapping[j]>c)
+	                {
+	                    count+=mapping[j]-c;
+	                }
+	            }
+	            cout<<count<<endl;
+	    }
+	}
+	return 0;
+}
