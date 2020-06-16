@@ -1,0 +1,42 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+#just checking for alternate x and y, if found then add them to count and making sure to not use them again.
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string a;
+	    cin>>a;
+	    int count=0;
+	    for(int i=1;i<a.size();i++)
+	    {
+	        if(a[i]=='x')
+	        {
+	            if(a[i-1]=='y')
+	            {
+	                count++;
+	                a[i]='-';
+	            }else if(a[i+1]=='y')
+	            {
+	                a[i+1]='-';
+	                count++;
+	            }
+	        }else if(a[i]=='y')
+	        {
+	            if(a[i-1]=='x')
+	            {
+	                count++;
+	                a[i]='-';
+	            }else if(a[i+1]=='x')
+	            {
+	                a[i+1]='-';
+	                count++;
+	            }
+	        }
+	        
+	    }
+	    cout<<count<<endl;
+	}
+}
