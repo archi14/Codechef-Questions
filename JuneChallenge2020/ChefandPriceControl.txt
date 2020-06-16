@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+#Simply add the difference to lost money if price is greater than the price ceiling.
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,k;
+	    cin>>n>>k;
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    int lost=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        if(a[i]>k)
+	        {
+	            lost+=a[i]-k;
+	        }
+	    }
+	    cout<<lost<<endl;
+	}
+}
