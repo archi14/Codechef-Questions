@@ -1,0 +1,24 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+#a fairly simple question, could be done iteratively,could be done with sum gp, or with one fact that some of number(exponential to 2)
+ before 2^n always give sum as 2^n-1. so we know the maximum sum that could be achieved using this is 2*p-1(p+p-1)
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int h,p;
+	    cin>>h>>p;
+	    int max = 2*p-1;
+	    if(max>=h)
+	    {
+	        cout<<1<<endl;
+	    }else
+	    {
+	        cout<<0<<endl;
+	    }
+	    
+	}
+}
