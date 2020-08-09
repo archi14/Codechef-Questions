@@ -1,0 +1,45 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+#we don't exactly need to know the values, just how many digits are required, since the maximum digit that could 
+be used is 9, so we check how many 9's are needed for each number and get the digits required.
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int c,r;
+	    cin>>c>>r;
+	    int numc=0;
+	    int numr=0;
+	    if(c%9==0)
+	    {
+	       numc = c/9; 
+	    }else
+	    {
+	        numc=c/9+1;
+	    }
+	    if(r%9==0)
+	    {
+	       numr = r/9; 
+	    }else
+	    {
+	        numr=r/9+1;
+	    }
+	  
+	    if(numc==numr)
+	    {
+	        cout<<1<<" "<<numc<<endl;
+	    }else if(numc<numr)
+	    {
+	        cout<<0<<" "<<numc<<endl;
+	    }else
+	    {
+	        cout<<1<<" "<<numr<<endl;
+	    }
+	    
+	    
+	}
+}
