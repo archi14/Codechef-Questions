@@ -1,0 +1,51 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+/**
+Mistakes
+1. First mistake I did in this is I didn't read the question properly and in haste I thought we have to calculate the total stress at the end of the workout.
+2. Keep in mind the type of the stress and other variables that won't be encompassed by int.
+
+In this question, we have to get the max stress the builder experiences during his/her workout.
+i.e. max(max_stress, current_stress) for all i for 0 to n;
+
+**/
+typedef long long ll;
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,r;
+        cin>>n>>r;
+        ll a[n];
+        for(ll i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        ll b[n];
+        for(ll i=0;i<n;i++)
+        {
+            cin>>b[i];
+        }
+        ll tb;
+        ll current_tension=b[0];
+        ll max_tension=b[0];
+        for(int i=1;i<n;i++)
+        {
+            
+            //cout<<max_tension<<" "<<current_tension<<endl;
+            tb=a[i]-a[i-1];
+            current_tension -= r*tb;
+            if(current_tension<0)
+            {
+                current_tension = 0;
+            }
+            current_tension += b[i];
+            max_tension = max(current_tension, max_tension);
+            
+        }
+        cout<<max_tension<<endl;
+    }
+}
