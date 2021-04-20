@@ -1,0 +1,88 @@
+#include iostream
+#include bitsstdc++.h
+using namespace std;
+/**
+We are given a range l to r for which the matchsticks are ignited together, since all the ends are tied together
+once that batch's least time taking matchstick is done burning, it set the remaining matchsticks on fire and light up 
+the other end making the remaining matchsticks of the batch burn at twice the speed.
+first we find the min and max time taking matchstick in the batch, the min query will determine the rate of all other
+matchstick in the batch. we have to find the matchstick that will take the maximum time out of all.
+max(outsidemax+minInBatch, minInBatch + (maxInBatch-minInBatch)/2));
+**/
+
+int constructMTUtil(int b[], int ss, int se, int mt, int index, bool isMax)
+{
+    if(ss==se)
+    {
+        mt[index]=b[ss];
+        return b[ss];
+    }
+    
+    int mid = (ss+se)2;
+    if(isMax)
+    {
+        mt[index] = max(constructMTUtil(b,ss,mid,mt,2index+1,true), constructMTUtil(b,mid+1,se,mt,2index+2,true));
+    }else
+    {
+        mt[index] = min(constructMTUtil(b,ss,mid,mt,2index+1,false), constructMTUtil(b,mid+1,se,mt,2index+2,false));
+    }
+    return mt[index];
+}
+int  constructMT(int b[], int n, bool isMax)
+{
+    int height = (int)ceil(log2(n));
+    int max_elements = 2pow(2, height) - 1;
+    int mt = new int[max_elements];
+    constructMTUtil(b,0,n-1,mt,0,isMax);
+    return mt;
+    
+}
+
+int getMax(int mt, int ss,int se,int qs,int qe, int index, bool isMax)
+{
+    if(qs=ss && qe=se)
+    {
+        return mt[index];
+    }
+    
+    if(qsse  qess)
+    {
+        if(isMax)
+        {
+            return 0;
+        }
+        return INT_MAX;
+    }
+    int mid = (ss+se)2;
+    if(isMax)
+    {
+        return max(getMax(mt,ss,mid,qs,qe,2index+1,true), getMax(mt,mid+1,se,qs,qe,2index+2,true));    
+    }
+    return min(getMax(mt,ss,mid,qs,qe,2index+1,false), getMax(mt,mid+1,se,qs,qe,2index+2,false));
+    
+}
+int main() {
+	int n;
+	cinn;
+	int b[n];
+	for(int i=0;in;i++)
+	{
+	    cinb[i];
+	}
+	int mt = constructMT(b,n,true);
+	int mint = constructMT(b,n,false);
+	int q;
+	cinq;
+	for(int j=0;jq;j++)
+	{
+	    int l,r;
+	    cinlr;
+	    int maxInside = getMax(mt,0,n-1,l,r,0,true);
+	    int minelement = getMax(mint,0,n-1,l,r,0,false);
+	    int maxOutside = max(getMax(mt,0,n-1,0,l-1,0,true),getMax(mt,0,n-1,r+1,n-1,0,true));
+	    double insideTime = minelement + (maxInside-minelement)2.0;
+	    double outsideTime = minelement + maxOutside;
+	    printf(%.1fn,max(insideTime,outsideTime));   
+	}
+	
+}
