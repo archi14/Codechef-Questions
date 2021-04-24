@@ -1,0 +1,28 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+/** 
+Just and the current number with 1 and check if output is 0 or 1.
+If 0 then add to count. left shift to get rid of that bit.
+**/
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+        ll n;
+        cin>>n;
+        ll c=0;
+        while(n)
+        {
+            int digit=n&1;
+            if(digit==0)
+            {
+                c++;
+            }
+            n=n>>1;
+        }
+        cout<<c<<endl;
+	}
+}
