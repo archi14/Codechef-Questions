@@ -1,0 +1,54 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+/** 
+We have to check if the first word of the given strings in part of 'EQUINOX' then add
+to score of sarthak else to anuradha's.
+sarthak's score is incremented by a and anuradha's score is incremented by b.
+**/
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,a,b;
+	    cin>>n>>a>>b;
+	    string words[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>words[i];
+	    }
+	    ll Sarthak=0,Anuradha=0;
+	    string mainWord="EQUINOX";
+	    for(int i=0;i<n;i++)
+	    {
+	        int f=0;
+	        for(int j=0;j<mainWord.size();j++)
+	        {
+	            if(words[i][0]==mainWord[j])
+	            {
+	                f=1;
+	                break;
+	            }
+	        }
+	        if(f)
+	        {
+	           Sarthak+=a;
+	        }else
+	        {
+	            Anuradha+=b;
+	        }
+	    }
+	    if(Sarthak==Anuradha)
+	    {
+	        cout<<"DRAW"<<endl;
+	    }else if(Sarthak>Anuradha)
+	    {
+	        cout<<"SARTHAK"<<endl;
+	    }else
+	    {
+	        cout<<"ANURADHA"<<endl;
+	    }
+	}
+}

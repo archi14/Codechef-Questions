@@ -1,0 +1,19 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+/** We just have to find out the number of times songs is played in given time.
+we can do this by total_time/song_timec
+**/
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int m,s;
+	    cin>>m>>s;
+	    int NumberOfTimes=m/s;
+	    cout<<NumberOfTimes<<endl;
+	}
+}

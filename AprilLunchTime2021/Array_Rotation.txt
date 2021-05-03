@@ -1,0 +1,55 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+/**
+no matter what the rotation amount would be the next sum would be sum=current_sum*2,
+because on rotation same elements would be repeated twice.
+Another thing to note here is modulo
+if sum<0
+then sum+=mod
+else 
+	sum%=mod;
+
+**/
+typedef long long ll;
+ll rem = 1000000007;
+
+int main() {
+
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    ll sum=0;
+    int q;
+    cin>>q;
+    int queries[q];
+    for(int i=0;i<q;i++)
+    {
+        cin>>queries[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        sum+=a[i];
+    }
+    sum%=rem;
+    if(sum<0)
+    {
+        sum+=rem;
+    }
+    for(int i=0;i<q;i++)
+    {
+        sum=(2*sum)%rem;
+        if(sum<0)
+        {
+            sum+=rem;
+        }
+        cout<<sum<<endl;
+    }
+    
+    
+    
+}
