@@ -1,0 +1,20 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+/**
+We have to find the last hoop that will be jumped, one thing to note here is that the number of hoops are given
+to be odd always, hence the last hoop to be jumped will be the median. using this knowledge we can say that the 
+last hoop is median i.e n/2+1 or (n+1)/2;
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int last = n/2+1;
+        cout<<last<<endl;
+    }
+}

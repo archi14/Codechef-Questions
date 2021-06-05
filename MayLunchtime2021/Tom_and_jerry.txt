@@ -1,0 +1,43 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+/** This may seems like a graph problem at first hand, but sometimes we overestimate the problem. We know the location
+of jerry and starting point of train. We are also given the information that the train would travel only K steps 
+and we have to make sure tom who is on the train get to jerry in exactly k steps. There are three cases to the problem:
+1. Train reaches jerry in exactly k steps.
+2. Train is not able to reach jerry in k steps.
+3. Train takes more than k steps.
+
+we are sure of the answer in case 1 and case 2 but case 3 still has ambuity because we are given that tom can move 
+back and forth a step, so if the number of steps is greater than k and the extra steps are divisible by 2 then tom 
+can move back and forth a step to reach jerry in exactly k steps.
+To calculate the distance upto jerry,we are making use of absolute distance[manhatan distance].
+
+**/
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int a,b,c,d,k;
+	    cin>>a>>b>>c>>d>>k;
+	    int distance = abs(a-c)+abs(b-d);
+	    if(k==distance)
+	    {
+	        cout<<"YES"<<endl;
+	    }else if(distance>k)
+	    {
+	        cout<<"NO"<<endl;
+	    }else
+	    {
+	        int rem = k-distance;
+	        if(rem%2==0)
+	        {
+	            cout<<"YES"<<endl;
+	        }else
+	        {
+	            cout<<"NO"<<endl;
+	        }
+	    }
+	}
+}
