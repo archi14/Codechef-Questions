@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+/**
+The question is straight forward we are given the nutrients required from coconut A and B and the nutrient found 
+in one of  these types, we have to find the number of coconuts required, it would be Xatotal/xaindividual + Xbtotal/xbindividual
+The only corner case would have been when we get a floating number after division but that doesn't matter here
+as we are already given the information that the division is perfect
+**/
+
+int main() {
+    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int xa,xb,XA,XB;
+        cin>>xa>>xb>>XA>>XB;
+        int total = XA/xa + XB/xb;
+        cout<<total<<endl;
+    }
+}
