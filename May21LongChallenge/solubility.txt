@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+/** Initial solubility at x temp is a/100gm, since the amount of water is constant i.e 1 liter,
+we could say that solubility as x temp is 10a, and max temperature that could be achieved is 100 and at each degree
+solubility increases by b/100gm i.e 10b and temp difference would be 100-x. so using all these things max amount that
+could be soluble is (100-x)*10*b+10*a, giving us a straigthforward answer for all the testcases.
+**/
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int x,a,b;
+        cin>>x>>a>>b;
+        int amount = (100-x)*10*b+10*a;
+        cout<<amount<<endl;
+    }
+}
