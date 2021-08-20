@@ -1,0 +1,22 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+// For Mega square we want the number of squares in length and breadth to be equal, if number of 
+// squares in length are x, then x*x = n, x = sqrt(x), so we take the squareroot of given number of squares,
+// then for length of mega squares just do sqrt(x)*A.
+
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,a;
+	    cin>>n>>a;
+	    int number = sqrt(n);
+	    int sideLength = number*a;
+	    cout<<sideLength<<endl;
+	}
+	return 0;
+}
