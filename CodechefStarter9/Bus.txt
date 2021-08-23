@@ -1,0 +1,66 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+/** We just have to make sure two conditions are met:
+1. Number of passengers in the bus should be smaller or equal to m.
+2. The person leaving the bus should be present in the bus in the first place.
+I am taking a marker for the people currently in bus and when someone is leaving, I am checking if that person
+was there in the bus.
+For the first condition I am taking a count for the number of people inside the bus, if at any point that exceeds
+m, we are moving to the inconsistency condition.
+**/
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,q;
+        cin>>n>>m>>q;
+        int inside[n+1],insideCount=0;
+        memset(inside,0,sizeof(inside));
+        char status[q];
+        int person[q];
+        for(int i=0;i<q;i++)
+        {
+            cin>>status[i];
+            cin>>person[i];
+        }
+        
+        int f=0;
+        for(int i=0;i<q;i++)
+        {
+            if(status[i]=='+')
+            {
+                if(inside[person[i]]==0)
+                {
+                    insideCount++;
+                    inside[person[i]]=1;
+                }
+                if(insideCount>m)
+                {
+                    f=1;
+                    break;
+                }
+            }else
+            {
+                if(inside[person[i]]==0)
+                {
+                    f=1;
+                    break;
+                }else
+                {
+                    inside[person[i]]=0;
+                    insideCount--;
+                }
+            }
+        }
+        if(f==1)
+        {
+            cout<<"Inconsistent"<<endl;
+        }else
+        {
+            cout<<"Consistent"<<endl;
+        }
+    }
+}
