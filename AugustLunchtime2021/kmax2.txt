@@ -1,0 +1,38 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+/**
+Although the question may appear straightforward at first, there is a chance of making an obvious mistake.
+Let's discuss the approach first. We would have to find the max element first, if max element has >=k-1
+elements to it's right, then we are good to go, all the elements to the right then can add up to make an
+subsequence of their own.
+The rookie mistake is to consider there would be only one max element, after we find max element, we again
+iterate through the array and all the elements to the right would be part of the subsequences that we want,
+this would be true for every max element that we encounter.
+**/
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        int a[n];
+        int maxElement = INT_MIN;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            maxElement = max(maxElement, a[i]);
+        }
+        
+        long long ans=0;
+        for(int i=k-1;i<n;i++)
+        {
+            if(a[i]==maxElement)
+            {
+                ans= ans + (long long)n-i;
+            }
+        }
+        cout<<ans<<endl;
+    }
+}

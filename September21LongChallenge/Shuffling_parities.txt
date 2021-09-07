@@ -1,0 +1,43 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/** We don't actually need to shuffle array here or compute the sum, if we ponder for a few minutes, we 
+can get the gist of the question, since we want to maximise the sum, we would want to place the elements at 
+a position so that the sum is maximized. The max value we can get is 1 when doing mod by 2. and that is only possible 
+if the element is not even. For element to not be even, we would have to place the even element at odd position
+and odd elements at even position. It doesn't matter what's the value of the element. So we just have to calculate
+the number of odd and even elements in the array, then the number of even places would be n/2 and odd would be 
+n - n/2. for odd elements we have n/2 choices, we take the min of those, because if the number of elements are greater
+than position, then we dont' care about the excess elements, they would end up at even position, resulting in 0
+mod value. Similar approach could be applied to even elements.
+**/
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int a[n],evenCount,oddCount,evenNumber=0,oddNumber=0;
+        evenCount = n/2;
+        oddCount = n - evenCount;
+        
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            if(a[i]%2==0)
+            {
+                evenNumber++;
+            }else
+            {
+                oddNumber++;
+            }
+        }
+        
+        int ans = min(evenCount, oddNumber) + min(oddCount, evenNumber);
+        
+        cout<<ans<<endl;
+    }
+}
