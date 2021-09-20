@@ -3,6 +3,7 @@
 
 using namespace std;
 /**
+
 For the sum of difference of adjacent elements to be odd, we have to make sure tthat the adjacent elements are odd and even, because odd-odd will be even and so will even-even. We are storing odd and even elements in two seperate vectors.
 After that we would have to take care of multiple cases.
 1. If either odd and even elements are zero, we won't be able to satisfy the given condition.
