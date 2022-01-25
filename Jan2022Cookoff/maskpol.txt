@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+// Either the infected people will wear mask or not infected.
+// Since we have to make sure minimum number of people are wearing masks, we take the minimum of two values
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,a;
+        cin>>n>>a;
+        int not_infected = n-a;
+        int masks = min(a, not_infected);
+        cout<<masks<<endl;
+        
+    }
+}
+
