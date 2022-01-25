@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+// Simple check the condition whether the money we have is greater
+// than pizza and burger cost. We give preference to pizza as per question.
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int x,y,z;
+        cin>>x>>y>>z;
+        if(x>=y)
+        {
+            cout<<"PIZZA"<<endl;
+        }else if(x>=z)
+        {
+            cout<<"BURGER"<<endl;
+        }else
+        {
+            cout<<"NOTHING"<<endl;
+        }
+        
+    }
+}
+
